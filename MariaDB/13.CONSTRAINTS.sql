@@ -21,7 +21,7 @@ VALUES (1, 'user01', 'pass01', '홍길동', '남', '010-1234-5678', 'hong123@gma
 INSERT
 INTO user_notnull
     (user_no, user_id, user_pwd, user_name, gender, phone, email)
-VALUES (3, null, 'pass02', '유관순', '여', '010-777-7777', 'yu77@gmail.com');
+VALUES (3, NULL, 'pass02', '유관순', '여', '010-777-7777', 'yu77@gmail.com');
 
 SELECT *
 FROM user_notnull;
@@ -86,7 +86,7 @@ FROM user_primarykey;
 INSERT
 INTO user_primarykey
     (user_no, user_id, user_pwd, user_name, gender, phone, email)
-VALUES (null, 'user03', 'pass03', '이순신', '남', '010-777-7777', 'lee222@gmail.com');
+VALUES (NULL, 'user03', 'pass03', '이순신', '남', '010-777-7777', 'lee222@gmail.com');
 
 -- user_no에 중복값 적용(에러 발생)
 INSERT
@@ -226,8 +226,8 @@ CREATE TABLE IF NOT EXISTS user_check
 
 INSERT
 INTO user_check
-VALUES (null, '홍길동', '남', 25),
-       (null, '이순신', '남', 33);
+VALUES (NULL, '홍길동', '남', 25),
+       (NULL, '이순신', '남', 33);
 
 SELECT *
 FROM user_check;
@@ -250,8 +250,8 @@ CREATE TABLE IF NOT EXISTS tbl_country
     country_code INT AUTO_INCREMENT PRIMARY KEY,
     country_name VARCHAR(255) DEFAULT '한국',
     population   VARCHAR(255) DEFAULT '0명',
-    add_day      DATE         DEFAULT (current_date),
-    add_time     DATETIME     DEFAULT (current_time)
+    add_day      DATE         DEFAULT (CURRENT_DATE),
+    add_time     DATETIME     DEFAULT (CURRENT_TIME)
 ) ENGINE = INNODB;
 
 SELECT *
@@ -260,7 +260,7 @@ FROM tbl_country;
 -- default로 insert 또는 update를 하면 default로 초기 세팅된 값으로 적용된다.
 INSERT
 INTO tbl_country
-VALUES (null, default, default, default, default);
+VALUES (NULL, default, default, default, default);
 
 -- insert 시 default 설정된 컬럼을 무시하고 insert하면 null이 아닌 default로 초기 세팅된 값이 들어간다.
 INSERT
