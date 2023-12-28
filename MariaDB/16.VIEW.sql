@@ -11,26 +11,11 @@ SELECT menu_name
      , menu_price
   FROM tbl_menu;
 
--- OR REPLACE
-CREATE OR REPLACE VIEW hansik AS
-SELECT
-       menu_code AS '메뉴코드'
-     , menu_name '메뉴명'
-     , category_name '카테고리명'
-  FROM tbl_menu a
-  JOIN tbl_category b ON a.category_code = b.category_code
-WHERE b.category_name = '한식';
-
-SELECT * FROM hansik;
-
 -- VIEW는 원본테이블을 참조해서 보여주는 용도이고 실제 보여지는건 원본 테이블의 테이터이다.
 -- 원본인 tbl_menu의 11번 메뉴 가격을 10원으로 수정해보자.
 UPDATE tbl_menu
    SET menu_price = 10
  WHERE menu_code = 11;
-
--- v_menu(뷰)로 확인해 보자.
-SELECT * FROM v_menu;
 
 ### VIEW를 통한 DML(절대 절대 비추!!)
 SELECT * FROM tbl_menu;
@@ -65,3 +50,18 @@ SELECT * FROM tbl_menu;
 
 -- VIEW 삭제
 DROP VIEW v_menu;
+
+-- OR REPLACE
+CREATE OR REPLACE VIEW hansik AS
+SELECT
+    menu_code AS '메뉴코드'
+     , menu_name '메뉴명'
+     , category_name '카테고리명'
+FROM tbl_menu a
+         JOIN tbl_category b ON a.category_code = b.category_code
+WHERE b.category_name = '한식';
+
+SELECT * FROM hansik;
+
+-- v_menu(뷰)로 확인해 보자.
+SELECT '메뉴명' FROM hansik; -- 뷰 생성 시 별칭으로 생성했다면 뷰를 통한 조회는 별칭으로만 가능하다.
