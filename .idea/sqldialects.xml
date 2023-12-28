@@ -4,5 +4,6 @@
     <file url="file://$PROJECT_DIR$/MariaDB/11.TRANSACTION.sql" dialect="MariaDB" />
     <file url="file://$PROJECT_DIR$/MariaDB/12.DDL.sql" dialect="MariaDB" />
     <file url="file://$PROJECT_DIR$/MariaDB/13.CONSTRAINTS.sql" dialect="MariaDB" />
+    <file url="file://$PROJECT_DIR$/MariaDB/15.FUNCTION.sql" dialect="MariaDB" />
   </component>
 </project>
