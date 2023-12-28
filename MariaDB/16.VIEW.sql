@@ -4,18 +4,24 @@ SELECT
      , menu_price
   from tbl_menu;
 
+-- CREATE VIEW
 CREATE VIEW v_menu
 AS
 SELECT menu_name
      , menu_price
   FROM tbl_menu;
 
-CREATE OR REPLACE v_menu
-SELECT menu_name '메뉴이름'
-     , menu_price '메뉴가격'
-FROM tbl_menu;
+-- OR REPLACE
+CREATE OR REPLACE VIEW hansik AS
+SELECT
+       menu_code AS '메뉴코드'
+     , menu_name '메뉴명'
+     , category_name '카테고리명'
+  FROM tbl_menu a
+  JOIN tbl_category b ON a.category_code = b.category_code
+WHERE b.category_name = '한식';
 
-SELECT * FROM v_menu;
+SELECT * FROM hansik;
 
 -- VIEW는 원본테이블을 참조해서 보여주는 용도이고 실제 보여지는건 원본 테이블의 테이터이다.
 -- 원본인 tbl_menu의 11번 메뉴 가격을 10원으로 수정해보자.
@@ -58,4 +64,4 @@ SELECT * FROM hansik;
 SELECT * FROM tbl_menu;
 
 -- VIEW 삭제
-DROP VIEW hansik;
+DROP VIEW v_menu;
